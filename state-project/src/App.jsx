@@ -2,7 +2,21 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-  let [counter, setCounter] = useState(0)
+  const [counter, setCounter] = useState(0)
+
+  // instead of inline for onclicks one can create functions
+  const addCount = () => {
+    if (counter < 20) setCounter(counter + 1)
+  }
+
+  const removeCount = () => {
+    if (counter > 0) setCounter(counter - 1)
+  }
+
+  const reset = () => {
+    setCounter(0)
+  }
+
 
   return (
     <>
@@ -10,21 +24,24 @@ function App() {
       <h2>Count Value: {counter}</h2>
 
       <button
-        onClick={() => setCounter(counter + 1)}
+        onClick={addCount}
+        // onClick={() => setCounter(counter + 1)}
         disabled={counter >= 20}
       >
         Add Count
       </button>{" "}
 
       <button
-        onClick={() => setCounter(counter - 1)}
+        // onClick={() => setCounter(counter - 1)}
         disabled={counter <= 0}
+        onClick={removeCount}
       >
         Remove Count
       </button>{" "}
 
       <button
-        onClick={() => setCounter(0)}
+        // onClick={() => setCounter(0)}\
+        onClick={reset}
       >
         Reset Count
       </button>
